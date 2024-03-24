@@ -2,7 +2,7 @@ import InputForm from "./InputForm";
 import styles from "@/styles/FormFood.module.css";
 import { useState } from "react";
 
-export default function FormFood({ food }) {
+export default function FormFood({ food, title }) {
   const [show, setShow] = useState(true);
   const handleChange = (event) => {
     console.log(event.target.value);
@@ -16,7 +16,7 @@ export default function FormFood({ food }) {
       <form
         className={`${styles.form_food} max-w-sm gap-2 p-5 w-3/4 mx-auto rounded-xl `}
       >
-        <h1 className=" text-2xl font-bold text-center mt-3">Form Food</h1>
+        <h1 className=" text-2xl font-bold text-center mt-3">{title}</h1>
 
         <InputForm
           label="Name"
@@ -49,12 +49,12 @@ export default function FormFood({ food }) {
 
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          className="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mx-3"
         >
-          Submit
+          {title}
         </button>
         <button
-          className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
+          className="text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
           onClick={() => setShow(false)}
         >
           Cancel
