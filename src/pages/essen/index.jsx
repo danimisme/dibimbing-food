@@ -1,3 +1,4 @@
+import CardFood from "@/components/CardFood";
 import axios from "axios";
 
 export async function getServerSideProps() {
@@ -11,10 +12,19 @@ export async function getServerSideProps() {
 }
 
 export default function FoodListPage({ foods }) {
-  console.log(foods);
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center">Food List</h1>
+      <div className=" p-5 flex justify-center ">
+        <h1 className=" text-2xl font-bold ">Food List</h1>
+        <button className=" bg-green-700 text-white font-bold py-2 px-4 ml-4 rounded-xl">
+          Add Food
+        </button>
+      </div>
+      <div className="grid grid-cols-4 gap-4 p-5">
+        {foods.map((food) => (
+          <CardFood key={food.id} food={food} />
+        ))}
+      </div>
     </div>
   );
 }
