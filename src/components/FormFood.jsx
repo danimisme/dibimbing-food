@@ -2,45 +2,19 @@ import { hide } from "@/redux/reducers/ModalShowReducers";
 import InputForm from "./InputForm";
 import styles from "@/styles/FormFood.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { useRouter } from "next/router";
 
-export default function FormFood({ food, title }) {
+export default function FormFood({ food, title, onSubmitForm }) {
   const dispatch = useDispatch();
   const isModalShow = useSelector((store) => store.modalShow.modalShow);
-  const router = useRouter();
-  const handleUpdate = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const description = e.target.description.value;
     const imageUrl = e.target.imageUrl.value;
-    const ingredients = e.target.ingredients.value;
+    const ingredients = e.target.ingredients.value.split(",");
 
-    axios
-      .post(
-        `https://api-bootcamp.do.dibimbing.id/api/v1/update-food/${food.id}`,
-        {
-          name,
-          description,
-          imageUrl,
-          ingredients: ingredients.split(","),
-        },
-        {
-          headers: {
-            apiKey: "w05KkI9AWhKxzvPFtXotUva-",
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZnRhaGZhcmhhbkBnbWFpbC5jb20iLCJ1c2VySWQiOiJjYTIzZDdjYy02Njk1LTQzNGItODE2Yy03ZTlhNWMwNGMxNjQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NjE4NzUzMjF9.wV2OECzC25qNujtyb9YHyzYIbYEV-wud3TQsYv7oB4Q",
-          },
-        }
-      )
-      .then(() => {
-        dispatch(hide());
-        router.reload();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    onSubmitForm(name, description, imageUrl, ingredients);
   };
   return (
     <div
@@ -51,7 +25,7 @@ export default function FormFood({ food, title }) {
       <div
         className={`${styles.form_food} max-w-sm gap-2 p-5 w-3/4 mx-auto rounded-xl `}
       >
-        <form onSubmit={handleUpdate}>
+        <form onSubmit={handleSubmit}>
           <h1 className=" text-2xl font-bold text-center mt-3">{title}</h1>
 
           <InputForm
@@ -59,28 +33,24 @@ export default function FormFood({ food, title }) {
             type="text"
             name="name"
             defaultValue={food.name}
-            // onChange={handleChange}
           />
           <InputForm
             label="Description"
             type="text"
             name="description"
             defaultValue={food.description}
-            // onChange={handleChange}
           />
           <InputForm
             label="Image Url"
             type="text"
             name="imageUrl"
             defaultValue={food.imageUrl}
-            // onChange={handleChange}
           />
           <InputForm
             label="Ingredients"
             type="text"
             name="ingredients"
             defaultValue={food.ingredients}
-            // onChange={handleChange}
           />
           <button
             type="submit"
