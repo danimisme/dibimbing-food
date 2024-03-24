@@ -1,3 +1,4 @@
+import DetailFoodCard from "@/components/DetailFoodCard";
 import axios from "axios";
 
 export async function getServerSideProps(context) {
@@ -8,11 +9,11 @@ export async function getServerSideProps(context) {
   return { props: { food: res?.data?.data } };
 }
 
-export default function DetailFoodPage(food) {
-  console.log(food);
+export default function DetailFoodPage({ food }) {
   return (
     <div>
-      <h1 className=" text-2xl font-bold text-center">Detail Food</h1>
+      <h1 className=" text-2xl font-bold text-center mt-3">Detail Food</h1>
+      <DetailFoodCard food={food} />
     </div>
   );
 }
