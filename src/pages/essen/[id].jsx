@@ -2,8 +2,9 @@ import DetailFoodCard from "@/components/DetailFoodCard";
 import FormFood from "@/components/FormFood";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { show } from "@/redux/reducers/ModalShowReducers";
+import usePost from "@/hooks/usePost";
 
 export async function getServerSideProps(context) {
   const res = await axios.get(
@@ -16,6 +17,17 @@ export async function getServerSideProps(context) {
 export default function DetailFoodPage({ food }) {
   const dispatch = useDispatch();
   const { push } = useRouter();
+  const { post } = usePost();
+
+  const handleEdit = (name, description, imageUrl, ingredients) => {
+    post(`update-food/${food.id}`, {
+      name,
+      description,
+      imageUrl,
+      ingredients,
+    });
+  };
+
   return (
     <div>
       <h1 className=" text-2xl font-bold text-center mt-3">Detail Food</h1>
@@ -37,7 +49,11 @@ export default function DetailFoodPage({ food }) {
           Delete
         </button>
       </div>
-      <FormFood food={food} title={`Edit ${food.name}`} />
+      <FormFood
+        food={food}
+        title={`Edit ${food.name}`}
+        onSubmitForm={handleEdit}
+      />
     </div>
   );
 }
