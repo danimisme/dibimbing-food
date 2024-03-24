@@ -14,16 +14,11 @@ export default function DetailFoodCard({ food }) {
           <span className="font-bold">Rating : </span> {food.rating}
         </p>
         <p className="text-lg border-b border-gray-300">
-          <span span className="font-bold">
-            Likes :{" "}
-          </span>
-          {food.totalLikes}
+          <span className="font-bold">Likes :</span> {food.totalLikes}
         </p>
         <p className="text-lg border-b border-gray-300">
           <span className="font-bold">Ingredients : </span>
-          {`${food.ingredients
-            .map((ingredient) => ingredient.split(","))
-            .join(", ")} `}
+          {`${food.ingredients.join(", ")} `}
         </p>
         <p className="text-lg border-b border-gray-300">
           <span className="font-bold">Description : </span> {food.description}
