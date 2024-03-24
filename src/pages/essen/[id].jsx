@@ -1,4 +1,5 @@
 import DetailFoodCard from "@/components/DetailFoodCard";
+import FormFood from "@/components/FormFood";
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -18,18 +19,19 @@ export default function DetailFoodPage({ food }) {
       <DetailFoodCard food={food} />
       <div className="flex justify-center gap-5 mt-5">
         <button
-          className="bg-gray-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-gray-700 text-white font-bold py-2 px-4 rounded hover:bg-gray-500"
           onClick={() => push("/essen")}
         >
           Back
         </button>
-        <button className="bg-green-700 text-white font-bold py-2 px-4 rounded">
+        <button className="bg-green-700 text-white font-bold py-2 px-4 rounded hover:bg-green-500">
           Edit
         </button>
-        <button className="bg-red-700 text-white font-bold py-2 px-4 rounded">
+        <button className="bg-red-700 text-white font-bold py-2 px-4 rounded hover:bg-red-500">
           Delete
         </button>
       </div>
+      <FormFood food={food} title={`Edit ${food.name}`} />
     </div>
   );
 }
