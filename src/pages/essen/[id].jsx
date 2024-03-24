@@ -2,6 +2,8 @@ import DetailFoodCard from "@/components/DetailFoodCard";
 import FormFood from "@/components/FormFood";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { show } from "@/redux/reducers/ModalShowReducers";
 
 export async function getServerSideProps(context) {
   const res = await axios.get(
@@ -12,6 +14,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function DetailFoodPage({ food }) {
+  const dispatch = useDispatch();
   const { push } = useRouter();
   return (
     <div>
@@ -24,7 +27,10 @@ export default function DetailFoodPage({ food }) {
         >
           Back
         </button>
-        <button className="bg-green-700 text-white font-bold py-2 px-4 rounded hover:bg-green-500">
+        <button
+          className="bg-green-700 text-white font-bold py-2 px-4 rounded hover:bg-green-500"
+          onClick={() => dispatch(show())}
+        >
           Edit
         </button>
         <button className="bg-red-700 text-white font-bold py-2 px-4 rounded hover:bg-red-500">
