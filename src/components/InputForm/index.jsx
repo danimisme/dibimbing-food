@@ -6,6 +6,7 @@ export default function InputForm({
   type,
   name,
   defaultValue,
+  placeholder,
   onChange,
 }) {
   return (
@@ -20,6 +21,7 @@ export default function InputForm({
         id={name}
         type={type}
         name={name}
+        placeholder={placeholder}
         defaultValue={defaultValue}
         onChange={onChange}
       />
