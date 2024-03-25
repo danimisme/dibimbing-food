@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { show } from "@/redux/reducers/ModalShowReducers";
 import FormFood from "@/components/FormFood";
 import usePost from "@/hooks/usePost";
+import Head from "next/head";
 
 export async function getServerSideProps() {
   const res = await axios.get(
@@ -30,6 +31,9 @@ export default function FoodListPage({ foods }) {
 
   return (
     <div>
+      <Head>
+        <title>Food List</title>
+      </Head>
       <div className=" p-5 flex justify-center ">
         <h1 className=" text-2xl font-bold ">Food List</h1>
         <button
@@ -39,7 +43,7 @@ export default function FoodListPage({ foods }) {
           Add Food
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2  gap-4 p-5 w-4/5 mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-4 p-5 w-4/5 mx-auto">
         {foods.map((food) => (
           <CardFood key={food.id} food={food} />
         ))}

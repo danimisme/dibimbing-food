@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { show } from "@/redux/reducers/ModalShowReducers";
 import usePost from "@/hooks/usePost";
+import Head from "next/head";
 
 export async function getServerSideProps(context) {
   const res = await axios.get(
@@ -30,6 +31,9 @@ export default function DetailFoodPage({ food }) {
 
   return (
     <div>
+      <Head>
+        <title>Detail Food</title>
+      </Head>
       <h1 className=" text-2xl font-bold text-center mt-3">Detail Food</h1>
       <DetailFoodCard food={food} />
       <div className="flex justify-center gap-5 mt-5">

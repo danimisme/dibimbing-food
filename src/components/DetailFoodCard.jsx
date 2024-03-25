@@ -1,6 +1,6 @@
 export default function DetailFoodCard({ food }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2  gap-4 items-center p-5 w-3/4 mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 items-center p-5 w-3/4 mx-auto">
       <div>
         <img
           className="rounded-xl w-full aspect-[4/3]"
