@@ -32,25 +32,29 @@ export default function FormFood({ food, title, onSubmitForm }) {
             label="Name"
             type="text"
             name="name"
-            defaultValue={food.name}
+            placeholder="Input Food Name"
+            defaultValue={food?.name}
           />
           <InputForm
             label="Description"
             type="text"
             name="description"
-            defaultValue={food.description}
+            placeholder="Describe The Food"
+            defaultValue={food?.description}
           />
           <InputForm
             label="Image Url"
             type="text"
             name="imageUrl"
-            defaultValue={food.imageUrl}
+            placeholder=" Example : https://example.com/image.jpg"
+            defaultValue={food?.imageUrl}
           />
           <InputForm
             label="Ingredients"
             type="text"
             name="ingredients"
-            defaultValue={food.ingredients}
+            placeholder="Input Ingredients"
+            defaultValue={food?.ingredients}
           />
           <button
             type="submit"
