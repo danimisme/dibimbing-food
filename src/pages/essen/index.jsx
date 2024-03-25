@@ -1,5 +1,9 @@
 import CardFood from "@/components/CardFood";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { show } from "@/redux/reducers/ModalShowReducers";
+import FormFood from "@/components/FormFood";
+import usePost from "@/hooks/usePost";
 
 export async function getServerSideProps() {
   const res = await axios.get(
@@ -12,11 +16,26 @@ export async function getServerSideProps() {
 }
 
 export default function FoodListPage({ foods }) {
+  const dispatch = useDispatch();
+  const { post } = usePost();
+
+  const handleCreate = (name, description, imageUrl, ingredients) => {
+    post("create-food", {
+      name,
+      description,
+      imageUrl,
+      ingredients,
+    });
+  };
+
   return (
     <div>
       <div className=" p-5 flex justify-center ">
         <h1 className=" text-2xl font-bold ">Food List</h1>
-        <button className=" bg-green-700 text-white font-bold py-2 px-4 ml-4 rounded-xl">
+        <button
+          className=" bg-green-700 text-white font-bold py-2 px-4 ml-4 rounded-xl"
+          onClick={() => dispatch(show())}
+        >
           Add Food
         </button>
       </div>
@@ -25,6 +44,7 @@ export default function FoodListPage({ foods }) {
           <CardFood key={food.id} food={food} />
         ))}
       </div>
+      <FormFood title="Add Food" onSubmitForm={handleCreate} />
     </div>
   );
 }
