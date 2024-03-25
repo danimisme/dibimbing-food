@@ -20,7 +20,7 @@ export default function FoodListPage({ foods }) {
           Add Food
         </button>
       </div>
-      <div className="grid grid-cols-4 gap-4 p-5">
+      <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2  gap-4 p-5 w-4/5 mx-auto">
         {foods.map((food) => (
           <CardFood key={food.id} food={food} />
         ))}
