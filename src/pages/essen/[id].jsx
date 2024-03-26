@@ -69,7 +69,7 @@ export default function DetailFoodPage({ food }) {
         title={`Edit ${food.name}`}
         onSubmitForm={handleEdit}
       />
-      <ModalDelete onConfirm={handleDelete} />
+      <ModalDelete onConfirm={handleDelete} title={`Delete ${food.name} ?`} />
     </div>
   );
 }
