@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { show } from "@/redux/reducers/ModalShowReducers";
 import usePost from "@/hooks/usePost";
 import Head from "next/head";
+import ModalDelete from "@/components/ModalDelete";
 
 export async function getServerSideProps(context) {
   const res = await axios.get(
@@ -58,6 +59,7 @@ export default function DetailFoodPage({ food }) {
         title={`Edit ${food.name}`}
         onSubmitForm={handleEdit}
       />
+      <ModalDelete />
     </div>
   );
 }
