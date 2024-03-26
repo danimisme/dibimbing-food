@@ -7,6 +7,7 @@ import { show } from "@/redux/reducers/ModalShowReducers";
 import usePost from "@/hooks/usePost";
 import Head from "next/head";
 import ModalDelete from "@/components/ModalDelete";
+import { showModalDelete } from "@/redux/reducers/ModalDeleteReducer";
 
 export async function getServerSideProps(context) {
   const res = await axios.get(
@@ -50,7 +51,10 @@ export default function DetailFoodPage({ food }) {
         >
           Edit
         </button>
-        <button className="bg-red-700 text-white font-bold py-2 px-4 rounded hover:bg-red-500">
+        <button
+          className="bg-red-700 text-white font-bold py-2 px-4 rounded hover:bg-red-500"
+          onClick={() => dispatch(showModalDelete())}
+        >
           Delete
         </button>
       </div>
