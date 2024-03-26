@@ -8,6 +8,7 @@ import usePost from "@/hooks/usePost";
 import Head from "next/head";
 import ModalDelete from "@/components/ModalDelete";
 import { showModalDelete } from "@/redux/reducers/ModalDeleteReducer";
+import useDelete from "@/hooks/useDelete";
 
 export async function getServerSideProps(context) {
   const res = await axios.get(
@@ -21,6 +22,7 @@ export default function DetailFoodPage({ food }) {
   const dispatch = useDispatch();
   const { push } = useRouter();
   const { post } = usePost();
+  const { deleteFood } = useDelete();
 
   const handleEdit = (name, description, imageUrl, ingredients) => {
     post(`update-food/${food.id}`, {
@@ -29,6 +31,10 @@ export default function DetailFoodPage({ food }) {
       imageUrl,
       ingredients,
     });
+  };
+
+  const handleDelete = () => {
+    deleteFood(`${food.id}`);
   };
 
   return (
@@ -63,7 +69,7 @@ export default function DetailFoodPage({ food }) {
         title={`Edit ${food.name}`}
         onSubmitForm={handleEdit}
       />
-      <ModalDelete />
+      <ModalDelete onConfirm={handleDelete} />
     </div>
   );
 }
