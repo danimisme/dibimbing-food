@@ -26,7 +26,9 @@ export default function FormFood({ food, title, onSubmitForm }) {
         className={`${styles.form_food} max-w-sm gap-2 p-5 w-3/4 mx-auto rounded-xl `}
       >
         <form onSubmit={handleSubmit}>
-          <h1 className=" text-2xl font-bold text-center mt-3">{title}</h1>
+          <h1 className=" text-2xl text-green-800 font-bold text-center mt-3">
+            {title}
+          </h1>
 
           <InputForm
             label="Name"
@@ -63,7 +65,7 @@ export default function FormFood({ food, title, onSubmitForm }) {
             {title}
           </button>
           <a
-            className="text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
+            className="text-white bg-yellow-700 hover:bg-yellow-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center cursor-pointer "
             onClick={() => dispatch(hide())}
           >
             Cancel
