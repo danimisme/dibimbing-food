@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={` sticky top-0 w-full transition duration-500 ease-in-out ${navStyle}`}
+      className={` fixed top-0 w-full transition duration-500 ease-in-out ${navStyle}`}
     >
       <div className=" font-bold p-4 flex justify-between w-4/5 mx-auto">
         <h1 className="text-3xl "> Dibimbing Food</h1>
