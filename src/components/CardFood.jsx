@@ -13,7 +13,7 @@ export default function CardFood({ food }) {
           {food.name}
         </h5>
         <Link href={`/essen/${food.id}`}>
-          <button className="bg-green-700 text-white font-bold py-2 px-4 rounded mt-4 hover:bg-green-300 hover:text-gray-700">
+          <button className="text-green-700 border-2 border-green-700 font-bold hover:bg-green-500 hover:text-white hover:border-green-500 py-1 px-2 rounded-xl">
             View Detail
           </button>
         </Link>
