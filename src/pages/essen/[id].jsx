@@ -38,11 +38,13 @@ export default function DetailFoodPage({ food }) {
   };
 
   return (
-    <div>
+    <div className="mt-5 py-5">
       <Head>
         <title>Detail Food</title>
       </Head>
-      <h1 className=" text-2xl font-bold text-center mt-3">Detail Food</h1>
+      <h1 className=" text-2xl text-yellow-600 font-mono font-bold text-center mt-5 mb-2">
+        Detail Food
+      </h1>
       <DetailFoodCard food={food} />
       <div className="flex justify-center gap-5 mt-5">
         <button

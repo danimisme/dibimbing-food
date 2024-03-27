@@ -34,7 +34,7 @@ export default function FoodListPage({ foods }) {
       <Head>
         <title>Food List</title>
       </Head>
-      <div className=" p-5 flex justify-center ">
+      <div className=" p-5 flex justify-center mt-10 ">
         <h1 className=" text-2xl font-bold ">Food List</h1>
         <button
           className=" bg-green-700 text-white font-bold py-2 px-4 ml-4 rounded-xl"
