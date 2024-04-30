@@ -1,5 +1,5 @@
-import Input from "./input";
-import Label from "./label";
+import Input from "./Input";
+import Label from "./Label";
 
 export default function InputForm({
   label,
